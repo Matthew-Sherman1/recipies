@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+    <form action = '/new' method = 'post'>
+        {% with messages = get_flashed_messages(category_filter = ['recipe']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2>Add new Recipe</h2>
+        <div>
+            <label for = 'name'>Name:</label>
+            <input type = 'text' name = 'name'>
+        </div>
+        <div>
+            <label for = 'description'>Description:</label>
+            <input type = 'text' name = 'description'>
+        </div>
+        <div>
+            <label for = 'instructions'>Instructions:</label>
+            <input type = 'text' name = 'instructions'>
+        </div>
+        <div>
+            <label for = 'date'>Date Made On:</label>
+            <input type = 'date' name = 'date'>
+        </div>
+        <div>
+            <label for = 'under30'>Under 30 Minutes?</label>
+            <input type = 'radio' name = 'under30' value = '1'>
+            <label for ='yes'>Yes</label>
+            <input type = 'radio' name = 'under30' value = '0' checked>
+            <label for ='no'>No</label>
+        </div>
+        <input type = 'submit' value = 'Create'>
+    </form>
+    <a href = '/dashboard'>Dashboard</a>
+    <a href = '/'>Logout</a>
+</body>
+</html>
